@@ -17,13 +17,15 @@ on:
     paths-ignore:
       - '**/*.md'
 
+  workflow_dispatch:
+
 jobs:
   build_debian:
     uses: ./.github/workflows/_meta.yaml
     with:
       distro: 'debian'
-      codenames: '["bullseye", "bookworm", "trixie"]'
-      architectures: '["amd64", "arm64"]'
+      codenames: '["trixie"]'
+      architectures: '["arm64"]'
       release: false
 
   build_ubuntu:
@@ -33,14 +35,6 @@ jobs:
       codenames: '["jammy", "noble", "resolute"]'
       architectures: '["amd64", "arm64"]'
       release: false
-
-  # Disabled as clang is stable.
-  # build_portable_windows:
-  #   uses: ./.github/workflows/_meta_portable.yaml
-  #   with:
-  #     os: 'windows'
-  #     architectures: '["win64"]'
-  #     release: false
 
   build_portable_windows_clang:
     uses: ./.github/workflows/_meta_win_clang_portable.yaml
