@@ -49,6 +49,8 @@ jobs:
     name: Publish Release
     if: ${{ inputs.release }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs:
       - build
     strategy:
